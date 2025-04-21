@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <title>CRUD TAREA</title>
+</head>
+<body>
+    <header>
+        <nav></nav>
+    </header>
+    <main>
+        <section class="container mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <a href="./create" class="btn btn-sm btn-primary">Registrar</a>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped w-100">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>TITULO</th>
+                                <th>AUTOR</th>
+                                <th>GENERO</th>
+                                <th>FECHA PUBLICACION</th>
+                                <th>ISBN</th>
+                                <th>DISPONIBLE</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% registros.forEach(libro => { %>
+                             <tr>
+                                <td><%= libro.id %></td>
+                                <td><%= libro.titulo %></td>
+                                <td><%= libro.autor %></td>
+                                <td><%= libro.genero %></td>
+                                <td><%= libro.fechaPublicacion.toLocaleDateString('es-PE') %></td>
+                                <td><%= libro.isbn %></td>
+                                <td><%= libro.disponible %></td>
+                                <td>
+                                    <a href="./edit/<%= libro.id %>" class="btn btn-sm btn-info">Editar</a>
+                                    <a href="./delete/<%= libro.id %>" class="btn btn-sm btn-danger">Eliminar</a>
+                                </td>
+                             </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

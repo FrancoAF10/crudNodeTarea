@@ -12,19 +12,18 @@ CREATE TABLE LIBRO(
 )ENGINE=INNODB;
 
 INSERT INTO LIBRO(titulo,autor,genero,fechaPublicacion,isbn,disponible)VALUES      
-                ('El principito','Antoine de Saint-Exupéry','fantasía','1943-04-06','9780156012195',true);
-
+                ('El principito','Antoine de Saint-Exupéry','Drama','1943-04-06','9780156012195',true);
 CREATE VIEW vista_libros AS
 SELECT 
     id,
     titulo,
     autor,
     genero,
-    FechaPublicacion,
+    fechaPublicacion,
     isbn,
     CASE 
         WHEN disponible = 1 THEN 'Disponible'
         WHEN disponible = 0 THEN 'No disponible'
-    END AS disponibilidad
+    END AS disponible
 FROM LIBRO;
 SELECT*FROM LIBRO;
