@@ -29,3 +29,23 @@ exports.delete=(req,res)=>{
         }
     });
 }
+exports.update = (req, res) => {
+    const id = req.body.id;
+    const titulo = req.body.titulo;
+    const autor = req.body.autor;
+    const genero = req.body.genero;
+    const fechaPublicacion = req.body.fechaPublicacion;
+    const isbn = req.body.isbn;
+    const disponible = req.body.disponible;
+
+    conexion.query('UPDATE LIBRO SET ? WHERE id = ?', 
+    [{ titulo, autor, genero, fechaPublicacion, isbn, disponible }, id], 
+    (error, results) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Libro actualizado correctamente');
+            res.redirect('/');
+        }
+    });
+};

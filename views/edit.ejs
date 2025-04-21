@@ -2,70 +2,58 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Editar Libro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-
-    </header>
-
-    <main>
-
-    </main>
-    <section class="container">
-        <form action="/edit" method="post" autocomplete="off">
+    <section class="container mt-4">
+        <form action="/update" method="POST">
+            <input type="hidden" name="id" value="<%= libro.id %>">
             <div class="card">
                 <div class="card-header">
-                    <a href="./" class="btn btn-sm btn-primary">Mostrar Lista</a>
+                    <a href="/" class="btn btn-primary btn-sm">Volver</a>
                 </div>
                 <div class="card-body">
                     <div class="mb-3 form-floating">
-                        <input type="text" class="form-control" id="titulo" name="titulo" autofocus>
-                        <label for="form-label">Titulo</label>
+                        <input type="text" name="titulo" class="form-control" value="<%= libro.titulo %>">
+                        <label>Titulo</label>
                     </div>
                     <div class="mb-3 form-floating">
-                        <input type="text" class="form-control" id="autor" name="autor" autofocus>
-                        <label for="form-label">Autor</label>
+                        <input type="text" name="autor" class="form-control" value="<%= libro.autor %>">
+                        <label>Autor</label>
                     </div>
                     <div class="mb-3 form-floating">
-                        <select name="genero" id="genero" class="form-select">
-                            <option value="">Seleccionar Genero</option>
-                            <option value="Biografia">Biografia</option>
-                            <option value="Poesia">Poesia</option>
-                            <option value="Drama">Drama</option>
-                            <option value="Cuento">Cuento</option>
-                            <option value="Fabula">Fabula</option>
+                        <select name="genero" class="form-select">
+                            <option value="Biografia" <%= libro.genero === 'Biografia' ? 'selected' : '' %>>Biografia</option>
+                            <option value="Poesia" <%= libro.genero === 'Poesia' ? 'selected' : '' %>>Poesia</option>
+                            <option value="Drama" <%= libro.genero === 'Drama' ? 'selected' : '' %>>Drama</option>
+                            <option value="Cuento" <%= libro.genero === 'Cuento' ? 'selected' : '' %>>Cuento</option>
+                            <option value="Fabula" <%= libro.genero === 'Fabula' ? 'selected' : '' %>>Fabula</option>
                         </select>
-                        <label for="form-label">Genero</label>
+                        <label>Genero</label>
                     </div>
                     <div class="mb-3 form-floating">
-                        <input type="date" class="form-control" id="fechaPublicacion" name="fechaPublicacion" autofocus>
-                        <label for="form-label">Fecha Publicación</label>
+                        <input type="date" name="fechaPublicacion" class="form-control" value="<%= libro.fechaPublicacion.toISOString().split('T')[0] %>">
+                        <label>Fecha Publicación</label>
                     </div>
                     <div class="mb-3 form-floating">
-                        <input type="text" class="form-control" id="isbn" name="isbn" autofocus>
-                        <label for="form-label">ISBN</label>
+                        <input type="text" name="isbn" class="form-control" value="<%= libro.isbn %>">
+                        <label>ISBN</label>
                     </div>
                     <div class="mb-3 form-floating">
                         <select name="disponible" id="disponible" class="form-select">
-                            <option value="">Disponibilidad</option>
-                            <option value="1">Disponible</option>
-                            <option value="2">No Disponible</option>
+                            <option value="1" <%= libro.disponible == 1 ? 'selected' : '' %>>Disponible</option>
+                            <option value="0" <%= libro.disponible == 0 ? 'selected' : '' %>>No Disponible</option>
                         </select>
-                        <label for="form-label">Disponibilidad</label>
+                        <label>Disponibilidad</label>
                     </div>
                 </div>
                 <div class="card-footer text-end">
                     <button class="btn btn-sm btn-primary" type="submit">Actualizar</button>
-                    <a href="/">Cancelar</a>
+                    <a href="/" class="btn btn-secondary btn-sm">Cancelar</a>
                 </div>
             </div>
         </form>
     </section>
-    <footer>
-
-    </footer>
 </body>
 </html>
